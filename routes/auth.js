@@ -51,13 +51,17 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
 // 로그아웃 라우터
 router.get('/logout', isLoggedIn, (req, res) => {
     // req.user 객체 제거
-    req.logout();
     // passport 0.6부터 추가해야하는 부분
-    req.user = null;
+    // for using passport-logout, have to use 'callback function'
+    req.logout(function(err) {
+        if (err){
+            return next(err);
+        }
+        req.user = null;
 
-    req.session.destroy();
-    res.redirect('/');
-
+        req.session.destroy();
+        res.redirect('/');
+    });
 });
 
 // 카카오 router
