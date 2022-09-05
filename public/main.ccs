@@ -80,7 +80,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   float: right;
   color: white;
   background: crimson;
-  border: none; 3
+  border: none;
 }
 .twit {
   border: 1px solid silver;
